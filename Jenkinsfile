@@ -34,7 +34,7 @@ pipeline {
                     // calculate a sample version tag
                     VERSION = shortCommitHash
                     currentBuild.displayName = "${PROJECT}-${VERSION}"
-                    IMAGE = "$DOCKERREPO:${BUILD_NUMBER}.${VERSION}"
+                    IMAGE = "$DOCKERREPO/$PROJECT:${BUILD_NUMBER}.${VERSION}"
                 }
             }
         }
@@ -45,7 +45,7 @@ pipeline {
                 script
                 {
                     // Build the docker image using a Dockerfile
-                    docker.build("$IMAGE","--no-cache -f Dockerfile .")
+                    docker.build("$IMAGE","-f Dockerfile .")
                 }
             }
         }
@@ -64,5 +64,19 @@ pipeline {
                 }
             }
     }
+}
+    post {
+      success {
+       echo 'job is success'
+      }
+      aborted {
+        echo 'aborted'
+      }
+      failure {
+        echo 'failed job'
+      }
+      cleanup {
+        cleanWs()
+      }
 }
 }
