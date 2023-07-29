@@ -18,6 +18,7 @@ pipeline {
         DOCKERREPO= 'bmaddi' 
         ARTIURL = 'artifactory-new-93bf8f5a14c88dd6.elb.eu-west-2.amazonaws.com:8082'
         DOCKER_REGISTRY_CREDENTIALS = credentials('docker-hub-creds')
+        DOCKER_REGISTRY_URL = 'https://registry.hub.docker.com'
 
 
     }
@@ -56,15 +57,15 @@ pipeline {
             {
                 script
                 {
-                     withDockerRegistry(credentialsId: DOCKER_REGISTRY_CREDENTIALS, url: 'https://registry.hub.docker.com')
-                    {
-                    /* groovylint-disable-next-line NestedBlockDepth */
-                       docker.image(IMAGE).push()
+                     withDockerRegistry(credentialsId: DOCKER_REGISTRY_CREDENTIALS, url: DOCKER_REGISTRY_URL) {
+                      sh "docker push ${IMAGE}"
                     }
+                }
+
                 }
             }
     }
-}
+                    
     post {
       success {
        echo 'job is success'
@@ -78,5 +79,5 @@ pipeline {
       cleanup {
         cleanWs()
       }
-}
+  }
 }
