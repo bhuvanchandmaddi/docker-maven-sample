@@ -1,0 +1,24 @@
+# Default values for sprint-boot-app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: bmaddi/sample-springboot-app
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+
+service:
+  type: ClusterIP
+  port: 80
+
+application:
+  port: 8080
+
