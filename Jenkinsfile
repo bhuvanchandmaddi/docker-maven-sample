@@ -16,10 +16,6 @@ pipeline {
         PROJECT = 'sample-springboot-app'
         IMAGE = 'sample-springboot-app:latest'
         DOCKERREPO= 'bmaddi' 
-        ARTIURL = 'artifactory-new-93bf8f5a14c88dd6.elb.eu-west-2.amazonaws.com:8082'
-        DOCKER_REGISTRY_CREDENTIALS = credentials('docker-hub-creds')
-        DOCKER_REGISTRY_URL = 'https://registry.hub.docker.com'
-
 
     }
     stages {
@@ -57,8 +53,8 @@ pipeline {
             {
                 script
                 {
-                     withDockerRegistry(credentialsId: DOCKER_REGISTRY_CREDENTIALS, url: DOCKER_REGISTRY_URL) {
-                      sh "docker push ${IMAGE}"
+                     withDockerRegistry([ credentialsId: "docker-hub-creds", url: "" ]) {
+                     docker.image(IMAGE).push()
                     }
                 }
 
