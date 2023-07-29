@@ -8,17 +8,13 @@ pipeline {
 	}
 
     environment{
-        appname = 'apm-blik'
-        BUILD_CONFIG_ID = 'greenbox-cd-helm'
-        BUILD_CONFIG_FILE = 'env.groovy'
-        APP_NAME = 'svc-apm-blik'
-		CD_CONFIG_DIR= 'cd_config'
-        DEVOPS_CONFIG_FILE = 'apm-blik-devops-config.yaml'
-        NAMESPACE = 'bmaddi'
-        registry = "bmaddi/sample-springboot-app"
-        BRANCH= "main"
-        CHECKOUT_CD = "continious-delivery"
-        APP_CONFIG_REPO_URL="https://github.com/bhuvanchandmaddi/docker-maven-sample.git"
+		// CD_CONFIG_DIR= 'cd_config'
+        // DEVOPS_CONFIG_FILE = 'apm-blik-devops-config.yaml'
+        // NAMESPACE = 'bmaddi'
+        // registry = "bmaddi/sample-springboot-app"
+        // BRANCH= "main"
+        // CHECKOUT_CD = "continious-delivery"
+        // APP_CONFIG_REPO_URL="https://github.com/bhuvanchandmaddi/docker-maven-sample.git"
     }
     parameters {
         string (
