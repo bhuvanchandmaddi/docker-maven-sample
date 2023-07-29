@@ -17,6 +17,8 @@ pipeline {
         IMAGE = 'sample-springboot-app:latest'
 		DOCKERREPO= 'bmaddi' 
         ARTIURL = 'artifactory-new-93bf8f5a14c88dd6.elb.eu-west-2.amazonaws.com:8082'
+        DOCKER_REGISTRY_CREDENTIALS = credentials('docker-hub-creds')
+
 
     }
     stages {
@@ -54,7 +56,7 @@ pipeline {
             {
                 script
                 {
-                     withDockerRegistry(credentialsId: 'docker-hub-creds', url: 'https://registry.hub.docker.com')
+                     withDockerRegistry(credentialsId: DOCKER_REGISTRY_CREDENTIALS, url: 'https://registry.hub.docker.com')
                     {
                     /* groovylint-disable-next-line NestedBlockDepth */
                        docker.image(IMAGE).push()
