@@ -15,7 +15,7 @@ pipeline {
 
         PROJECT = 'svc-apm-blik'
         IMAGE = 'sample-springboot-app:latest'
-		DOCKERREPO= 'bmaddi' 
+        DOCKERREPO= 'bmaddi' 
         ARTIURL = 'artifactory-new-93bf8f5a14c88dd6.elb.eu-west-2.amazonaws.com:8082'
 
     }
@@ -26,7 +26,7 @@ pipeline {
             {
                 script
                 {
-				     // calculate GIT lastest commit short-hash
+		    // calculate GIT lastest commit short-hash
                     gitCommitHash = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
                     shortCommitHash = gitCommitHash.take(7)
                     // calculate a sample version tag
