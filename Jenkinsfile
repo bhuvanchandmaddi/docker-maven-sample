@@ -13,7 +13,7 @@ pipeline {
      environment
     { 
 
-        PROJECT = 'svc-apm-blik'
+        PROJECT = 'sample-springboot-app'
         IMAGE = 'sample-springboot-app:latest'
         DOCKERREPO= 'bmaddi' 
         ARTIURL = 'artifactory-new-93bf8f5a14c88dd6.elb.eu-west-2.amazonaws.com:8082'
