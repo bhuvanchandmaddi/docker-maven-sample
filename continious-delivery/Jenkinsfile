@@ -60,7 +60,10 @@ pipeline {
         stage('Install service') { 
             steps {
                         script{
-                           sh 'echo "It just install the service"'
+                          sh '''
+			  export KUBECONFIG=/path/to/updated_kubeconfig
+                          helm upgrade --insecure-skip-tls-verify --install springbootapp  continious-delivery/helmcharts/sprint-boot-app -f continious-delivery/external-config.yaml --set image.tag=${image_tag}
+			  '''
                         }      
             }
         }
