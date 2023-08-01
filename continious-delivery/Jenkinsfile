@@ -61,7 +61,7 @@ pipeline {
             steps {
                         script{
                           sh '''
-			  export KUBECONFIG=/path/to/updated_kubeconfig
+			  export KUBECONFIG=/home/minikube/.kube/config
                           helm upgrade --insecure-skip-tls-verify --install springbootapp  continious-delivery/helmcharts/sprint-boot-app -f continious-delivery/external-config.yaml --set image.tag=${image_tag}
 			  '''
                         }      
