@@ -1,12 +1,5 @@
 pipeline {
-  agent
-	{
-  		node
-  		{
-  			label 'docker-slave'
-  		}
-	}
-
+  agent any
     environment{
 		// CD_CONFIG_DIR= 'cd_config'
         // DEVOPS_CONFIG_FILE = 'apm-blik-devops-config.yaml'
