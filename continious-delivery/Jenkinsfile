@@ -60,11 +60,9 @@ pipeline {
         stage('Install service') { 
             steps {
                         script{
-                          sh '''
 			  def minikube_password = 'minikube'
 			  export KUBECONFIG=/tmp/config
                           echo "${minikube_password}" | sudo -S helm upgrade --insecure-skip-tls-verify --install springbootapp  continious-delivery/helmcharts/sprint-boot-app -f continious-delivery/external-config.yaml --set image.tag=${image_tag}
-			  '''
                         }      
             }
         }
